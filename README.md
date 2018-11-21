@@ -6,5 +6,5 @@
 
 - [gRPC](https://grpc.io/)
 - [Apache Thrift](https://thrift.apache.org/)
-- [facebook Thrift](https://github.com/facebook/fbthrift)  aka FBThrift (i.e, [FBOSS Agent](https://github.com/facebook/fboss/tree/master/fboss/agent) )
+- [facebook Thrift](https://github.com/facebook/fbthrift) , aka FBThrift (i.e, [FBOSS Agent](https://github.com/facebook/fboss/tree/master/fboss/agent) )
 - [Apache Avro](https://avro.apache.org/)
