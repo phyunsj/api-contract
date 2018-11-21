@@ -4,6 +4,7 @@
 
 ## Related Posts
 
+- [Use Swagger to define RESTful APIs](https://developer.ibm.com/articles/wa-use-swagger-to-document-and-define-restful-apis/)
 - [gRPC](https://grpc.io/)
 - [Apache Thrift](https://thrift.apache.org/)
 - [facebook Thrift](https://github.com/facebook/fbthrift) , aka FBThrift (i.e, [FBOSS Agent](https://github.com/facebook/fboss/tree/master/fboss/agent) )
