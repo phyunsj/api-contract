@@ -70,19 +70,19 @@ template <typename T>void decode( char *msgbuf, int msgsize, T *Res ){
     }
     switch(res.op) {
         case ADD : 
-                memcpy(Res, &res.calc_res_u.add_result, sizeof(AddResult));
+                memcpy(Res, &res.calc_res_u.add_result, sizeof(T));
                 break;
         case SUBTRACT: 
-                memcpy(Res, &res.calc_res_u.sub_result, sizeof(SubResult));
+                memcpy(Res, &res.calc_res_u.sub_result, sizeof(T));
                 break;
         case MULTIPLY: 
-                memcpy(Res, &res.calc_res_u.mul_result, sizeof(MulResult));
+                memcpy(Res, &res.calc_res_u.mul_result, sizeof(T));
                 break;
         case DIVIDE: 
-                memcpy(Res, &res.calc_res_u.div_result, sizeof(DivResult));
+                memcpy(Res, &res.calc_res_u.div_result, sizeof(T));
                 break;
         case FACTORIAL: 
-                memcpy(Res, &res.calc_res_u.fac_result, sizeof(FacResult));
+                memcpy(Res, &res.calc_res_u.fac_result, sizeof(T));
                 break;
     }
 
