@@ -36,9 +36,7 @@ union calc_res switch ( int op ) {
 };
 ```
 
-#### [Service Request](https://github.com/phyunsj/api-contract/blob/master/xdr_zmq_calc/calc_client.cpp) 
-
-ZMQ as Transport Layer
+#### [Service Request](https://github.com/phyunsj/api-contract/blob/master/xdr_zmq_calc/calc_client.cpp) : ZMQ as Transport Layer
 
 ```
 void test_add(void)
