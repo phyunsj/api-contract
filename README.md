@@ -4,7 +4,7 @@
 
 ## Example : [XDR as an API Contract](https://github.com/phyunsj/api-contract/tree/master/xdr_zmq_calc)
 
-#### [Interface Definition : XDR](https://github.com/phyunsj/api-contract/blob/master/xdr_zmq_calc/calc.x) 
+#### [Interface Definition : calc.x](https://github.com/phyunsj/api-contract/blob/master/xdr_zmq_calc/calc.x) 
 
 ```
 const ADD       = 601;
@@ -52,7 +52,7 @@ void test_add(void)
     char msgbuf[msgsize];
      
     encode( msgbuf, msgsize, ADD, &Req);
-    transport( msgbuf, msgsize);
+    transport( msgbuf, msgsize); // ZMQ
     decode( msgbuf, msgsize, &Res );
 
     assert( 0 == Res.err );
