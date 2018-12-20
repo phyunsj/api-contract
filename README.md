@@ -60,9 +60,58 @@ void test_add(void)
 }
 ```
 
+#### [En(De)coder](https://github.com/phyunsj/api-contract/blob/master/xdr_zmq_calc/calc_client.cpp)
+
+```
+void encode( char *msgbuf, int msgsize, int op, T *Req ){
+    
+    XDR xdr;
+    calc_req  req = {0};
+    req.op = op;
+    switch(req.op) {
+        case ADD : 
+                memcpy(&req.calc_req_u.add_request, Req, sizeof(T));
+                break;
+        case SUBTRACT : 
+                ...
+     }
+     
+     xdrmem_create (&xdr, msgbuf, msgsize , XDR_ENCODE);
+     if (!xdr_calc_req (&xdr, &req)) {
+        fprintf (stderr, "req: could not encode\n");
+        exit (1);
+    }
+    xdr_free((xdrproc_t) xdr_calc_req, (char *) &req);
+    xdr_destroy(&xdr);
+    return;
+ }
+ 
+ void decode( char *msgbuf, int msgsize, T *Res ){
+     
+    XDR xdr;
+    calc_res res = {0};
+
+    xdrmem_create ( &xdr, msgbuf, msgsize, XDR_DECODE);
+    if (!xdr_calc_res (&xdr, &res)) {
+        fprintf (stderr, "res: could not decode\n");
+        exit (1);
+    }
+    switch(res.op) {
+        case ADD : 
+                memcpy(Res, &res.calc_res_u.add_result, sizeof(T));
+                break;
+        case SUBTRACT: 
+                ...
+                
+     }
+     xdr_free((xdrproc_t) xdr_calc_res, (char *) &res);
+     xdr_destroy(&xdr);
+}
+```
+
 ## Related Posts
 
-- [Use Swagger to define RESTful APIs](https://developer.ibm.com/articles/wa-use-swagger-to-document-and-define-restful-apis/)
+- [Swagger to define RESTful APIs](https://developer.ibm.com/articles/wa-use-swagger-to-document-and-define-restful-apis/)
 - [gRPC](https://grpc.io/)
 - [Apache Thrift](https://thrift.apache.org/)
 - [facebook Thrift](https://github.com/facebook/fbthrift) , aka FBThrift (i.e, [FBOSS Agent](https://github.com/facebook/fboss/tree/master/fboss/agent) )
