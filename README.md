@@ -4,6 +4,10 @@
 
 ## Example : [XDR as an API Contract](https://github.com/phyunsj/api-contract/tree/master/xdr_zmq_calc)
 
+
+![Alt text](https://g.gravizo.com/svg?%40startuml%3B%0Ahide%20footbox%3B%0Aautonumber%3B%0Aactor%20User%3B%0Abox%20%22External%20Service%22%3B%0Aparticipant%20%22Proxy%20Service%20A%22%20as%20A%3B%0Aparticipant%20%22Transport%22%20as%20B%3B%0Aend%20box%3B%0Abox%20%22Internal%20Service%22%3B%0Aparticipant%20%22Transport%22%20as%20C%3B%0Aparticipant%20%22Service%20Handler%22%20as%20D%3B%0Aend%20box%3B%0Aparticipant%20%22Service%20A%22%20as%20E%3B%0A...%20...%3B%0AUser%20-%3E%20A%3A%20Service%20Request%3B%0Aactivate%20A%3B%0AA%20-%3E%20B%3A%20Create%20Request/XDR%20encode%3B%0Anote%20over%20A%3A%20switch%20req-%3Eop%3B%0Aactivate%20B%3B%0AB%20-%3E%20C%3A%20zmq_send%3B%0Aactivate%20C%3B%0AC%20-%3E%20D%3A%20XDR%20decode/Create%20Request%3B%0Aactivate%20D%3B%0Anote%20over%20D%3B%0Aswitch%20req-%3Eop%3B%0Aend%20note%3B%0AD%20-%3E%20E%3B%0Aactivate%20E%3B%0AD%20%3C--E%3B%0Adeactivate%20E%3B%0AD%20--%3E%20C%3A%20XDR%20encode%3B%0Adeactivate%20D%3B%0AC%20--%3E%20B%3A%20zmq_receive%3B%0Adeactivate%20C%3B%0AB%20--%3E%20A%3A%20XDR%20decode%3B%0Adeactivate%20B%3B%0AA%20--%3E%20User%3A%20Service%20Response%3B%0Adeactivate%20A%3B%0Aref%20over%20A%3B%0A%20test_add%3Acalc_client.cpp%3B%0Aend%20ref%3B%0Aref%20over%20D%2CE%3B%0A%20serve%3Acalc_server.cpp%3B%0Aend%20ref%3B%0A...%3B%0A%40enduml)
+
+
 #### [Interface Definition : calc.x](https://github.com/phyunsj/api-contract/blob/master/xdr_zmq_calc/calc.x) 
 
 ```
@@ -35,8 +39,6 @@ union calc_res switch ( int op ) {
     ... // omitted for brevity
 };
 ```
-
-![Alt text](https://g.gravizo.com/svg?%40startuml%3B%0Ahide%20footbox%3B%0Aautonumber%3B%0Aactor%20User%3B%0Abox%20%22External%20Service%22%3B%0Aparticipant%20%22Proxy%20Service%20A%22%20as%20A%3B%0Aparticipant%20%22Transport%22%20as%20B%3B%0Aend%20box%3B%0Abox%20%22Internal%20Service%22%3B%0Aparticipant%20%22Transport%22%20as%20C%3B%0Aparticipant%20%22Service%20Handler%22%20as%20D%3B%0Aend%20box%3B%0Aparticipant%20%22Service%20A%22%20as%20E%3B%0A...%20...%3B%0AUser%20-%3E%20A%3A%20Service%20Request%3B%0Aactivate%20A%3B%0AA%20-%3E%20B%3A%20Create%20Request/XDR%20encode%3B%0Anote%20over%20A%3A%20switch%20req-%3Eop%3B%0Aactivate%20B%3B%0AB%20-%3E%20C%3A%20zmq_send%3B%0Aactivate%20C%3B%0AC%20-%3E%20D%3A%20XDR%20decode/Create%20Request%3B%0Aactivate%20D%3B%0Anote%20over%20D%3B%0Aswitch%20req-%3Eop%3B%0Aend%20note%3B%0AD%20-%3E%20E%3B%0Aactivate%20E%3B%0AD%20%3C--E%3B%0Adeactivate%20E%3B%0AD%20--%3E%20C%3A%20XDR%20encode%3B%0Adeactivate%20D%3B%0AC%20--%3E%20B%3A%20zmq_receive%3B%0Adeactivate%20C%3B%0AB%20--%3E%20A%3A%20XDR%20decode%3B%0Adeactivate%20B%3B%0AA%20--%3E%20User%3A%20Service%20Response%3B%0Adeactivate%20A%3B%0Aref%20over%20A%3B%0A%20test_add%3Acalc_client.cpp%3B%0Aend%20ref%3B%0Aref%20over%20D%2CE%3B%0A%20serve%3Acalc_server.cpp%3B%0Aend%20ref%3B%0A...%3B%0A%40enduml)
 
 #### [Service Request](https://github.com/phyunsj/api-contract/blob/master/xdr_zmq_calc/calc_client.cpp) : ZMQ as Transport Layer
 
