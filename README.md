@@ -120,3 +120,4 @@ void encode( char *msgbuf, int msgsize, int op, T *Req ){
 - [Apache Thrift](https://thrift.apache.org/)
 - [facebook Thrift](https://github.com/facebook/fbthrift) , aka FBThrift (i.e, [FBOSS Agent](https://github.com/facebook/fboss/tree/master/fboss/agent) )
 - [Apache Avro](https://avro.apache.org/)
+- [Gravizo Guide](https://github.com/phyunsj/api-contract/blob/master/README.Gravizo.md)
