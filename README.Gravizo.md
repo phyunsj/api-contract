@@ -7,6 +7,7 @@ A simple way of describing graphs and include it easily in your web for free, bl
 - [Sequence Diagram Example](http://plantuml.com/sequence-diagram)
 - [Having trouble using Gravizo? Cheat the system](https://gist.github.com/svenevs/ce05761128e240e27883e3372ccd4ecd)
 
+
 ## Example
 
 ```
@@ -59,6 +60,17 @@ end ref;
 @enduml
 )
 ```
+
+```
+ $ python
+Type "help", "copyright", "credits" or "license" for more information.
+>>> raw = '''  INSERT YOUR SEQUENCE DIAGRAM    '''
+>>> import urllib
+>>> urllib.quote(raw)
+' ... USE THIS OUTPUT FOR GITHUB README ...'
+```
+
+
 
 ## Diagram
 
